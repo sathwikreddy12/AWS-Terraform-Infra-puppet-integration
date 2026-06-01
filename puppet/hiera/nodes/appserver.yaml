@@ -1,0 +1,5 @@
+# Overrides common.yaml for these servers
+
+webserver::app_port: 8080
+webserver::worker_processes: '4'
+monitoring::log_group: 'dev-app-server-logs'

@@ -1,0 +1,19 @@
+# Tells Puppet where to look for data and in what order
+
+version: 5
+
+hierarchy:
+  - name: "Node specific data"
+    path: "nodes/%{trusted.certname}.yaml"
+    # looks for data specific to this exact server first
+    # trusted.certname = server's SSL certificate name
+    # example: nodes/dev-app-server-1.yaml
+
+  - name: "Common data"
+    path: "common.yaml"
+    # if not found in node file → look here
+    # applies to all servers
+
+defaults:
+  data_hash: yaml_data
+  datadir: hiera
