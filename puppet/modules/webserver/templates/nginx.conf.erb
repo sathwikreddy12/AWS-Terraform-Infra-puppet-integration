@@ -1,0 +1,31 @@
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 8080;
+        server_name <%= @hostname %>;
+        # @hostname = this server's hostname
+        # Puppet replaces this with the actual hostname at runtime
+
+        location / {
+            proxy_pass http://localhost:<%= @app_port %>;
+            # @app_port comes from Hiera
+            # different servers can have different ports
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+        }
+
+        location /health {
+            return 200 'OK';
+            # ALB health check hits this endpoint
+            # must return 200 for ALB to mark server healthy
+        }
+    }
+}

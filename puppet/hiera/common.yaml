@@ -1,0 +1,8 @@
+# Puppet reads this when no node-specific value exists
+
+base::timezone: 'Asia/Kolkata'
+monitoring::log_group: 'dev-application-logs'
+monitoring::metrics_namespace: 'dev-infrastructure'
+
+webserver::app_port: 8080
+webserver::worker_processes: 'auto'

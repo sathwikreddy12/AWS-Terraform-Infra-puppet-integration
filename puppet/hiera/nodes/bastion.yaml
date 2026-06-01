@@ -1,0 +1,4 @@
+# Values specific to bastion only
+
+monitoring::log_group: 'dev-bastion-logs'
+
