@@ -32,7 +32,7 @@ variable "ami_id" {
 variable "app_server_count" {
   description = "Number of app servers to create"
   type        = number
-  default     = 3
+  default     = 4
 }
 variable "instance_profile_name" {
   description = "IAM instance profile name from IAM module"
