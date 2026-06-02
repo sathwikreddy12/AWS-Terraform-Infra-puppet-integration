@@ -61,8 +61,6 @@ environments/
 │   ├── main.tf           # calls all modules
 │   ├── variables.tf      # variable declarations
 │   └── terraform.tfvars  # actual values — only file that changes per env
-└── prod/
-    └── terraform.tfvars  # different CIDRs, instance sizes, server count
 ```
 
 The module code never changes between environments. Only `terraform.tfvars` changes. Scaling from 3 to 10 app servers is a single line change: `app_server_count = 10`.
