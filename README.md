@@ -82,8 +82,6 @@ The module code never changes between environments. Only `terraform.tfvars` chan
 
 ## What I learned debugging this
 
-### Availability Zone mismatch
-Initially set `availability_zones = ["us-east-2a", "us-east-2b"]` but the provider was `us-east-1`. Subnets were being placed in a different region than the VPC. Fixed by aligning AZ names with the provider region — and learned that AZs always inherit the region prefix.
 
 ### NAT Gateway placement
 My first design placed the NAT Gateway in a private subnet. Traffic from private instances couldn't reach the internet because NAT itself needs an IGW route to forward traffic. Moved NAT to a public subnet where the IGW route exists.
